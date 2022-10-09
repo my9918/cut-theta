@@ -33,12 +33,6 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 edges = cv2.Canny(gray,90,450,apertureSize = 3)
 #cv2.imwrite("2canny.png", edges)
 
-right=10
-left=-10
-a=np.deg2rad(right)
-b=np.deg2rad(left)
-print(a,b)   
-
 lines = cv2.HoughLinesP(edges, rho=1, theta=np.pi/360, threshold=150, minLineLength=300, maxLineGap=70)
 for line in lines:
     x1, y1, x2, y2 = line[0]
@@ -47,7 +41,7 @@ for line in lines:
     if(deg<0):
         deg=-deg
 
-    if (a < rad) or (rad < b ):
+    if (10 < deg) or (deg < -10 ):
         # 横縞以外の邪魔な線
         cv2.line(img,(x1,y1),(x2,y2),(255,0,0),2,lineType=cv2.LINE_AA)
     else:
