@@ -2,6 +2,9 @@ import cv2
 import numpy as np
 import math
 
+def main():
+    txtmake()
+    
 img_origin = cv2.imread("IMG_4122.JPG")
 #xyxy to yyxx 
 img = img_origin[649:1725,1281:4032]
@@ -27,12 +30,6 @@ for line in lines:
     x1, y1, x2, y2 = line[0]
     rad = math.atan2(y2 - y1, x2 - x1)
     deg = np.rad2deg(rad)
-    with open('deg.txt', 'a') as f:
-        content = str(deg)
-        f.write(content + '\n')
-    with open('line.txt', 'a') as f:
-        content2 = str(line)
-        f.write(content2 + '\n')
     if (a < rad) or (rad < b ):
         # 横縞
         cv2.line(img,(x1,y1),(x2,y2),(255,0,0),2,lineType=cv2.LINE_AA)
@@ -41,3 +38,10 @@ for line in lines:
         cv2.line(img,(x1,y1),(x2,y2),(0,0,255),2,lineType=cv2.LINE_AA)
 cv2.imwrite("result.jpg", img)
 
+def txtmake():
+    with open('deg.txt', 'a') as f:
+        content = str(deg)
+        f.write(content + '\n')
+    with open('line.txt', 'a') as f:
+        content2 = str(line)
+        f.write(content2 + '\n')
