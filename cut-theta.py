@@ -18,6 +18,14 @@ def txtmake():
         f.write(content2 + '\n')
         #print("txtOpen")
 
+
+with open('deg.txt', 'w') as f:
+    print("text clean")
+with open('line.txt', 'w') as f:
+    print("text clean")
+with open('sort_deg.txt', 'w') as f:
+    print("text clean")
+
 #白黒のネガにする
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 #cv2.imwrite("1nega.png", gray)
