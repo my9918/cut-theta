@@ -14,6 +14,9 @@ def main():
 
 
 
+
+
+
 cap = cv2.VideoCapture(0)
 while True:
     #カメラからの画像取得
@@ -22,8 +25,6 @@ while True:
     #カメラの画像の出力
     #cv2.imshow('frame' , frame)
 
-
-    img = frame[649:1725,1281:4032]
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     #cv2.imwrite("1nega.png", gray)
     #reversed_gray = cv2.bitwise_not(gray) これよりも下のCannyのほうが良さげ
@@ -66,7 +67,7 @@ while True:
     mea = np.mean(deg) 
     #print(mea) 
     print(mea,end="\r")
-cv2.imwrite("result.jpg", img)
+
 #メモリを解放して終了するためのコマンド
 cap.release()
 cv2.destroyAllWindows()
